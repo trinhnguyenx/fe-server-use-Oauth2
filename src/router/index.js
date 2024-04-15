@@ -1,26 +1,29 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-Vue.use(VueRouter)
-  const routes = [
+import { createRouter, createWebHistory } from 'vue-router';
+import Signup from '../components/Signup.vue';
+import Login from '../components/Login.vue';
+import ForgotPassword from '../components/ForgotPassword.vue';
+
+const routes = [
   {
     path: '/',
     name: 'signup',
-    component: () => import('../components/Signup.vue')
+    component: Signup
   },
   {
     path: '/login',
     name: 'login',
-    component: () => import('../components/Login.vue')
+    component: Login
   },
   {
     path: '/forgot-password',
     name: 'forgot-password',
-    component: () => import('../components/ForgotPassword.vue')
+    component: ForgotPassword
   }
-]
-const router = new VueRouter({
-  mode: 'history',
-  base: process.env.BASE_URL,
+];
+
+const router = createRouter({
+  history: createWebHistory(),
   routes
-})
-export default router
+});
+
+export default router;
